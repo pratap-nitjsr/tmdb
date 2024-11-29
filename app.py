@@ -4,11 +4,14 @@ import joblib
 import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
 from utils import *
+import os
 
 # Load the pipeline using pickle
 @st.cache(allow_output_mutation=True)
 def load_pipeline():
     pipeline_path = "./pipeline.joblib"
+    if not os.path.exists(pipeline_path):
+        st.write("Pipeline file does not exist at the specified path.")
     try:
         pipeline = joblib.load(pipeline_path)
         st.write("Pipeline loaded successfully.")
