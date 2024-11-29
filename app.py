@@ -8,7 +8,7 @@ from utils import *
 # Load the pipeline using pickle
 @st.cache(allow_output_mutation=True)
 def load_pipeline():
-    pipeline_path = "pipeline.joblib"
+    pipeline_path = "./pipeline.joblib"
     with open(pipeline_path, 'rb') as file:
         return joblib.load(file)
 
