@@ -9,8 +9,11 @@ from utils import *
 @st.cache(allow_output_mutation=True)
 def load_pipeline():
     pipeline_path = "./pipeline.joblib"
-    with open(pipeline_path, 'rb') as file:
-        return joblib.load(file)
+    try:
+        pipeline = joblib.load(pipeline_path)
+        st.write("Pipeline loaded successfully.")
+    except Exception as e:
+        st.write(f"Failed to load pipeline: {e}")
 
 pipeline = load_pipeline()
 
